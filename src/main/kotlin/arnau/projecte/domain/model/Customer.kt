@@ -6,9 +6,12 @@ import jakarta.persistence.Table
 import java.util.UUID
 
 @Entity
-@Table(name = "users")
-data class User(
+@Table(name = "customers")
+data class Customer(
         @Id val id: UUID,
         val name: String,
         val bankAccount: String,
-)
+) {
+    constructor() : this(UUID.randomUUID(), "", ""){
+    }
+}

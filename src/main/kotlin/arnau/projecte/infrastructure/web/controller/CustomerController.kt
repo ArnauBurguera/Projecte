@@ -1,7 +1,7 @@
 package arnau.projecte.infrastructure.web.controller
 
-import arnau.projecte.application.service.UserService
-import arnau.projecte.domain.model.User
+import arnau.projecte.application.service.CustomerService
+import arnau.projecte.domain.model.Customer
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -14,15 +14,15 @@ import java.util.*
 
 @RestController
 @RequestMapping("/users")
-class UserController(
-        private val userService: UserService
+class CustomerController(
+        private val customerService: CustomerService
 ) {
 
     @GetMapping("/{id}")
-    fun getUserById(@PathVariable id: String): ResponseEntity<User> =
-            userService.getUserById(UUID.fromString(id))?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()
+    fun getUserById(@PathVariable id: String): ResponseEntity<Customer> =
+            customerService.getCustomerById(UUID.fromString(id))?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()
 
     @PostMapping
-    fun createUser(@RequestBody user: User): ResponseEntity<User> =
-            ResponseEntity.ok(userService.createUser(user))
+    fun createUser(@RequestBody customer: Customer): ResponseEntity<Customer> =
+            ResponseEntity.ok(customerService.createCustomer(customer))
 }
