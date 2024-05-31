@@ -1,4 +1,4 @@
-package arnau.projecte.infrastructure.web.repository
+package arnau.projecte.domain.model
 
 import arnau.projecte.domain.model.Customer
 import java.util.*

@@ -1,7 +1,7 @@
 package arnau.projecte.application.service
 
 import arnau.projecte.domain.model.Customer
-import arnau.projecte.infrastructure.web.repository.CustomerRepository
+import arnau.projecte.domain.model.CustomerRepository
 import org.springframework.stereotype.Service
 import java.util.UUID
 
