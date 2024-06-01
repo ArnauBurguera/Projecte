@@ -15,7 +15,7 @@ la db com és el cas has de tenir el container amb la db corrents.*<br>
 
 - **docker-compose up --build:**<br>*aixecar docker compose (has d'estar al folder on esta el docker-compose.yml)*<br>
 
-- **Ctrl + C:**<br>*deatch del foreground de Docker que streameja logs sense tombar containers*<br>
+- **Ctrl + C:**<br>*detach del foreground de Docker que streameja logs and 'gracefully stops' els containers*<br>
 
 - **docker-compose up --build -d:**<br>*aixeca build però 'detached' amb el que Docker no corre en el foreground i streameja logs*<br>
 
