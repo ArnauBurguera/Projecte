@@ -1,7 +1,7 @@
 package arnau.projecte.infrastructure.web.repository
 
 import arnau.projecte.domain.model.Customer
-import arnau.projecte.domain.model.CustomerRepository
+import arnau.projecte.domain.repository.CustomerRepository
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
