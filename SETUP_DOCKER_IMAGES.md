@@ -1,20 +1,19 @@
-Docker commands
-### Microsoft SQL Server ###
+### Microsoft SQL Server ##
 
 https://hub.docker.com/_/microsoft-mssql-server
 
-Windows PC:
+#### Windows PC:
 docker run --name sqlserver2019 -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Adam123456" -p 1401:1433 -d mcr.microsoft.com/mssql/server:2019-latest
 
-MacOS & Linux:
+#### MacOS & Linux:
 docker run --name sqlserver2019 -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=Aburguera1234' -p 1401:1433 -d mcr.microsoft.com/mssql/server:2019-latest
 
 
-# Note that MSSQL_SA_PASSWORD and SA_PASSWORD are functionally identical. Microsoft has depreciated SA_PASSWORD but it continues to work. MSSQL_SA_PASSWORD should be used moving forward.
+Note that MSSQL_SA_PASSWORD and SA_PASSWORD are functionally identical. Microsoft has depreciated SA_PASSWORD but it continues to work. MSSQL_SA_PASSWORD should be used moving forward.
 
 
 ##################
-### PostgreSQL ###
+### PostgreSQL ##
 
 https://hub.docker.com/_/postgres/
 
@@ -24,51 +23,38 @@ docker run --name postgresql -p 5401:5432 -e POSTGRES_PASSWORD=Aburguera1234 -d 
 
 
 #######################
-### Docker Commands ###
+### Docker Commands 
 
-# view all running containers
-docker ps
+- **docker ps**</br>*view all running containers*
 
-# view all containers regardless of status
-docker ps -a
+- **docker ps -a**</br>*view all containers regardless of status*
 
-# stop a container
-docker stop sqlserver2019
+- **docker stop sqlserver2019**</br>*stop a container*
 
-# start a container
-docker start sqlserver2019
+- **docker start sqlserver2019**</br>*start a container*
 
-# remove a container
-docker rm sqlserver2019
+- **docker rm sqlserver2019**</br>*remove a container*
 
 ############################
 ### Microsoft SQL Server ###
 
-# Log into sqlserver2019 docker container
-docker exec -it sqlserver2019 bash
+- **docker exec -it sqlserver2019 bash**</br>*Log into sqlserver2019 docker container*
 
-# View OS information
-cat /etc/os-release
+- **cat /etc/os-release**</br>*View OS information*
 
-# Log into SQL Server using SQLCMD command line tool
-/opt/mssql-tools/bin/sqlcmd -U sa -P Aburguera1234
+- **/opt/mssql-tools/bin/sqlcmd -U sa -P Aburguera1234**</br>*Log into SQL Server using SQLCMD command line tool*
 
-# View version information
-SELECT @@Version;
-GO
+- **SELECT @@Version;</br>
+GO**</br>*View version information*
 
-# List databases currently on the server
-SELECT name FROM sys.databases;
-GO
+- **SELECT name FROM sys.databases;</br>
+GO**</br>*List databases currently on the server*
 
-# Create a new database
-CREATE DATABASE mytestdb;
+- **CREATE DATABASE mytestdb;**</br>*Create a new database*
 
-# Quit SQLCMD CLI tool
-exit
+- **exit**</br>*Quit SQLCMD CLI tool*
 
-# Exit out of the docker container
-exit
+- **exit**</br>*Exit out of the docker container*
 
 
 
@@ -76,27 +62,19 @@ exit
 ##################
 ### PostgreSQL ###
 
-# Log into postgresql docker container
-docker exec -it postgresql bash
+- **docker exec -it postgresql bash**</br>*Log into postgresql docker container*
 
-# View OS information
-cat /etc/os-release
+- **cat /etc/os-release**</br>*View OS information*
 
-# Log into PosgreSQL server using PSQL command line tool
-psql -U postgres
+- **psql -U postgres**</br>*Log into PosgreSQL server using PSQL command line tool*
 
-# View help documentation
-help
+- **help**</br>*View help documentation*
 
-# List databases currently on the server
-\l
+- **\l**</br>*List databases currently on the server*
 
-# Create a new database
-CREATE DATABASE mytestdb;
+- **CREATE DATABASE mytestdb;**</br>*Create a new database*
 
-# Quit PSQL CLI tool
-\q
+- **\q**</br>*Quit PSQL CLI tool*
 
-# Exit out of the docker container
-exit
+- **exit**</br>*Exit out of the docker container*
 
