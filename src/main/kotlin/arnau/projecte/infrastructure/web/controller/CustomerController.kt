@@ -25,4 +25,9 @@ class CustomerController(
     @PostMapping
     fun createUser(@RequestBody customer: Customer): ResponseEntity<Customer> =
             ResponseEntity.ok(customerService.createCustomer(customer))
+
+    //get all user pagination i provar postman
+    //amb classe(INMemoryProcessRepository) contact-resol
+    //Fer integration tests amb H2 fer package intTest i dins fer resources i dins fer application-test.properties
+    //afegir auth jwt
 }
