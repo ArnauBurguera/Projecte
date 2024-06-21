@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 
 
 @RestController
@@ -20,14 +22,22 @@ class CustomerController(
 
     @GetMapping("/{id}")
     fun getUserById(@PathVariable id: String): ResponseEntity<Customer> =
-            customerService.getCustomerById(UUID.fromString(id))?.let { ResponseEntity.ok(it) } ?: ResponseEntity.notFound().build()
+            customerService.getCustomerById(UUID.fromString(id))?.let {
+                ResponseEntity.ok(it)
+            } ?: ResponseEntity.notFound().build()
 
     @PostMapping
     fun createUser(@RequestBody customer: Customer): ResponseEntity<Customer> =
             ResponseEntity.ok(customerService.createCustomer(customer))
 
-    //get all user pagination i provar postman
+    @GetMapping
+    fun getAllUsers(@PageableDefault(size = 10) pageable: Pageable): ResponseEntity<List<Customer>> {
+        val page = customerService.getAllCustomers(pageable)
+        return ResponseEntity.ok(page.content)
+    }
+
     //amb classe(INMemoryProcessRepository) contact-resol
     //Fer integration tests amb H2 fer package intTest i dins fer resources i dins fer application-test.properties
     //afegir auth jwt
+    //  juliol 3 9:30 matí 40 higiene
 }

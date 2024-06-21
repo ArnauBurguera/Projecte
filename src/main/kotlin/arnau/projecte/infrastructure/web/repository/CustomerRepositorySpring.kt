@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import java.util.*
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 
 @Component
 internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA) : CustomerRepository {
@@ -16,8 +18,9 @@ internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA)
     override fun save(customer: Customer): Customer {
         return repo.save(customer)
     }
-    fun delete(customer: Customer) {
-        repo.delete(customer)
+
+    override fun findAll(pageable: Pageable): Page<Customer> {
+        return repo.findAll(pageable)
     }
 }
 @Repository
