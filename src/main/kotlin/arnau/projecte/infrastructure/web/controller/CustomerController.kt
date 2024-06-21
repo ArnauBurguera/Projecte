@@ -39,5 +39,4 @@ class CustomerController(
     //amb classe(INMemoryProcessRepository) contact-resol
     //Fer integration tests amb H2 fer package intTest i dins fer resources i dins fer application-test.properties
     //afegir auth jwt
-    //  juliol 3 9:30 matí 40 higiene
 }
