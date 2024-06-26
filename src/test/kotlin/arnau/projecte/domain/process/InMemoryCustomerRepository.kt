@@ -21,7 +21,7 @@ class InMemoryCustomerRepository : CustomerRepository {
     override fun findAll(pageable: Pageable): Page<Customer> {
         val customersList = customers.values.toList()
         val start = pageable.offset.toInt()
-        val end = (start + pageable.pageSize).coerceAtMost(customersList.size)
+        val end = (start + pageable.pageSize).coerceAtMost(customersList.size)//coerceAtMost ensures that the end index does not exceed the size of the list, preventing an IndexOutOfBoundsException
         return PageImpl(customersList.subList(start, end), pageable, customersList.size.toLong())
     }
 }

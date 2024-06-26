@@ -10,17 +10,31 @@ import java.util.UUID
 @Entity
 @Table(name = "customers")
 data class Customer(
-        @Id val id: UUID,
+        @Id val id: UUID = UUID.randomUUID(),
         val name: String,
         val bankAccount: String,
         @Enumerated(EnumType.STRING)
         val role: CustomerRole
 ) {
-    constructor() : this(UUID.randomUUID(), "", "", CustomerRole.CUSTOM)
+    constructor() : this(UUID.randomUUID(), "", "", CustomerRole.USER)//JPA requires that all entity classes have a no-argument constructor.
+
+    class Builder {
+        private var id: UUID = UUID.randomUUID()
+        private var name: String = ""
+        private var bankAccount: String = ""
+        private var role: CustomerRole = CustomerRole.USER
+
+        fun id(id: UUID) = apply { this.id = id }
+        fun name(name: String) = apply { this.name = name }
+        fun bankAccount(bankAccount: String) = apply { this.bankAccount = bankAccount }
+        fun role(role: CustomerRole) = apply { this.role = role }
+
+        fun build() = Customer(id, name, bankAccount, role)
+    }
 }
 
 enum class CustomerRole {
-    CUSTOM,
+    USER,
     ADMIN,
     MODERATOR
 }

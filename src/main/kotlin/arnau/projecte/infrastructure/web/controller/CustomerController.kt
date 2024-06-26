@@ -27,7 +27,7 @@ class CustomerController(
             } ?: ResponseEntity.notFound().build()
 
     @PostMapping
-    fun createUser(@RequestBody customer: Customer): ResponseEntity<Customer> =
+    fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Customer> =
             ResponseEntity.ok(customerService.createCustomer(customer))
 
     @GetMapping
