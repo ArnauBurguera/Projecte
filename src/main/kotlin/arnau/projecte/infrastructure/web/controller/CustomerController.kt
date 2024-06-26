@@ -36,7 +36,6 @@ class CustomerController(
         return ResponseEntity.ok(page.content)
     }
 
-    //amb classe(INMemoryProcessRepository) contact-resol
     //Fer integration tests amb H2 fer package intTest i dins fer resources i dins fer application-test.properties
     //afegir auth jwt
 }
