@@ -29,8 +29,6 @@ dependencies {
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
     testImplementation("org.mockito:mockito-core:3.6.0")
     testImplementation("org.mockito:mockito-junit-jupiter:3.6.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
