@@ -9,13 +9,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.domain.PageRequest
 import java.util.UUID
 
 @SpringBootTest
-@ActiveProfiles("intTest") // Activate the "intTest" profile
+@ActiveProfiles("test") // Activate the "intTest" profile
 class CustomerRepositoryIntTest {
-    @Autowired
+    @Qualifier("InMemoryCustomerRepository")
     private lateinit var customerRepository: CustomerRepository
 
     private lateinit var customer: Customer

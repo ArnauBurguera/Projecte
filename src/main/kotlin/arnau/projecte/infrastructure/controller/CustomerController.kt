@@ -1,4 +1,4 @@
-package arnau.projecte.infrastructure.web.controller
+package arnau.projecte.infrastructure.controller
 
 import arnau.projecte.application.service.CustomerService
 import arnau.projecte.domain.model.Customer

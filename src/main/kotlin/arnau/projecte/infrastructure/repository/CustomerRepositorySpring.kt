@@ -1,4 +1,4 @@
-package arnau.projecte.infrastructure.web.repository
+package arnau.projecte.infrastructure.repository
 
 import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.repository.CustomerRepository
