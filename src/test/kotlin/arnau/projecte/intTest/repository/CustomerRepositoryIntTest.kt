@@ -1,4 +1,4 @@
-package arnau.projecte.inTest.repository
+package arnau.projecte.intTest.repository
 
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.boot.test.context.SpringBootTest
@@ -11,12 +11,13 @@ import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import java.util.UUID
 
 @SpringBootTest
-@ActiveProfiles("test") // Activate the "intTest" profile
+@ActiveProfiles("test") // Activate the "test" profile
 class CustomerRepositoryIntTest {
-    @Qualifier("InMemoryCustomerRepository")
+    /*@Qualifier("InMemoryCustomerRepository")*/
     private lateinit var customerRepository: CustomerRepository
 
     private lateinit var customer: Customer
