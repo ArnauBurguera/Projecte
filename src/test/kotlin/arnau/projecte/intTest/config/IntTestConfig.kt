@@ -15,8 +15,6 @@ import org.springframework.context.annotation.Profile
 
 @Configuration
 @EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])
-@ComponentScan(excludeFilters = [ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = [CustomerRepositorySpring::class])])
-@ComponentScan(excludeFilters = [ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = [CustomerRepositoryJPA::class])])
 @Profile("test") // This configuration will be used when the "test" profile is active
 class IntTestConfig {
 

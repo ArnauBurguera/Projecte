@@ -17,7 +17,8 @@ import java.util.UUID
 @SpringBootTest
 @ActiveProfiles("test") // Activate the "test" profile
 class CustomerRepositoryIntTest {
-    /*@Qualifier("InMemoryCustomerRepository")*/
+    @Autowired
+    /*@Qualifier("customerRepository")*/
     private lateinit var customerRepository: CustomerRepository
 
     private lateinit var customer: Customer
