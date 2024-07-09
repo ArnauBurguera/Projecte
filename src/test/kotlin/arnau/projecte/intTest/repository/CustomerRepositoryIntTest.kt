@@ -10,12 +10,15 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import java.util.UUID
 
 @SpringBootTest
-@ActiveProfiles("test") // Activate the "test" profile
+/*@EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])*/
+/*@ActiveProfiles("test")*/ // Activate the "test" profile
 class CustomerRepositoryIntTest {
     @Autowired
     /*@Qualifier("customerRepository")*/

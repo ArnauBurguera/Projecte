@@ -32,6 +32,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:3.6.0")
     testImplementation("org.mockito:mockito-junit-jupiter:3.6.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
+    testImplementation("com.h2database:h2:1.4.200")
 }
 
 tasks.withType<KotlinCompile> {
