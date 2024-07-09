@@ -26,7 +26,7 @@ internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA)
     }
 }
 @Repository
-@Profile("prod")
+/*@Profile("prod")*/
 interface CustomerRepositoryJPA : JpaRepository<Customer, UUID> {
 //Contacta amb db però no vull disposar de tots els mètodes de JPARepository
 }

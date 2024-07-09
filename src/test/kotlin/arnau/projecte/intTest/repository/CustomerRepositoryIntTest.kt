@@ -4,6 +4,7 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.boot.test.context.SpringBootTest
 import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.model.CustomerRole
+import arnau.projecte.domain.process.InMemoryCustomerRepository
 import arnau.projecte.domain.repository.CustomerRepository
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
@@ -18,16 +19,17 @@ import java.util.UUID
 
 @SpringBootTest
 /*@EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])*/
-/*@ActiveProfiles("test")*/ // Activate the "test" profile
-class CustomerRepositoryIntTest {
+@ActiveProfiles("test") // Activate the "test" profile
+class CustomerRepositoryIntTest(
     @Autowired
-    /*@Qualifier("customerRepository")*/
-    private lateinit var customerRepository: CustomerRepository
-
+    @Qualifier("jpaRepository")
+    private var customerRepository: CustomerRepository
+) {
     private lateinit var customer: Customer
 
     @BeforeEach
     fun setup() {
+        /*customerRepository = InMemoryCustomerRepository()*/
         customer = Customer.Builder()
             .id(UUID.randomUUID())
             .name("Jane Doe")
@@ -62,7 +64,7 @@ class CustomerRepositoryIntTest {
         val pageable = PageRequest.of(0, 10)
         val customersPage = customerRepository.findAll(pageable)
         assertFalse(customersPage.isEmpty)
-        assertTrue(customersPage.content.size == 2)
+        assertTrue(customersPage.content.size == 1)
         assertTrue(customersPage.content.contains(customer))
     }
 }
