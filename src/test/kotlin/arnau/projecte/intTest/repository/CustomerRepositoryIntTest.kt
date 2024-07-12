@@ -6,6 +6,8 @@ import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.model.CustomerRole
 import arnau.projecte.domain.process.InMemoryCustomerRepository
 import arnau.projecte.domain.repository.CustomerRepository
+import arnau.projecte.infrastructure.repository.CustomerRepositorySpring
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
@@ -22,13 +24,13 @@ import java.util.UUID
 class CustomerRepositoryIntTest(
     @Autowired
     @Qualifier("inMemoryRepository")
-    private var customerRepository: CustomerRepository
+    /*@Qualifier("H2")*/
+    private var customerRepository: CustomerRepository,
 ) {
     private lateinit var customer: Customer
 
     @BeforeEach
     fun setup() {
-        customerRepository = InMemoryCustomerRepository()
         customer = Customer.Builder()
             .id(UUID.randomUUID())
             .name("Jane Doe")
@@ -36,6 +38,11 @@ class CustomerRepositoryIntTest(
             .role(CustomerRole.USER)
             .build()
         customerRepository.save(customer)
+    }
+
+    @AfterEach
+    fun tearDown() {
+        customerRepository.clearDB()
     }
 
     @Test

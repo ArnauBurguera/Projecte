@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 
 @Component
-/*@Profile("prod")*/
 internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA) : CustomerRepository {
     override fun findById(id: UUID): Customer? {
         return repo.findById(id).orElse(null)
@@ -24,9 +23,12 @@ internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA)
     override fun findAll(pageable: Pageable): Page<Customer> {
         return repo.findAll(pageable)
     }
+
+    override fun clearDB() {
+        repo.deleteAll()
+    }
 }
 @Repository
-/*@Profile("prod")*/
 interface CustomerRepositoryJPA : JpaRepository<Customer, UUID> {
 //Contacta amb db però no vull disposar de tots els mètodes de JPARepository
 }

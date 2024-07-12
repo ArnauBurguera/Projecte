@@ -24,4 +24,8 @@ class InMemoryCustomerRepository : CustomerRepository {
         val end = (start + pageable.pageSize).coerceAtMost(customersList.size)//coerceAtMost ensures that the end index does not exceed the size of the list, preventing an IndexOutOfBoundsException
         return PageImpl(customersList.subList(start, end), pageable, customersList.size.toLong())
     }
+
+    override fun clearDB() {
+        customers.clear()
+    }
 }

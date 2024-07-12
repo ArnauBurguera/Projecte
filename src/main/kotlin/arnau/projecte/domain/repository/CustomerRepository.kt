@@ -9,4 +9,5 @@ interface CustomerRepository {
     fun findById(id: UUID): Customer?
     fun save(customer: Customer): Customer
     fun findAll(pageable: Pageable): Page<Customer>
+    fun clearDB()
 }

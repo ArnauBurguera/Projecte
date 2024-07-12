@@ -18,8 +18,8 @@ import org.springframework.context.annotation.Profile
 @Configuration
 @Profile("test") // This configuration will be used when the "test" profile is active
 class IntTestConfig(
-    /*@Autowired
-    private val repo: CustomerRepositoryJPA*/
+    @Autowired
+    private val repo: CustomerRepositoryJPA
 ) {
 
     @Bean
@@ -29,9 +29,9 @@ class IntTestConfig(
         return InMemoryCustomerRepository()
     }
 
-    /*@Bean
+    @Bean
     @Qualifier("H2")
-    fun customerRepositoryJPA(): CustomerRepository {
+    fun customerRepositoryJPAH2(): CustomerRepository {//Needs to be called differently from actual customerRepositoryJPA bean
         return CustomerRepositorySpring(repo)
-    }*/
+    }
 }
