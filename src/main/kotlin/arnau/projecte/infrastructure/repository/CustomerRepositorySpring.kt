@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 
 @Component
-@Profile("prod")
+/*@Profile("prod")*/
 internal class CustomerRepositorySpring(private val repo: CustomerRepositoryJPA) : CustomerRepository {
     override fun findById(id: UUID): Customer? {
         return repo.findById(id).orElse(null)

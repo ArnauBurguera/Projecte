@@ -18,18 +18,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import java.util.UUID
 
 @SpringBootTest
-/*@EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])*/
 @ActiveProfiles("test") // Activate the "test" profile
 class CustomerRepositoryIntTest(
     @Autowired
-    @Qualifier("jpaRepository")
+    @Qualifier("inMemoryRepository")
     private var customerRepository: CustomerRepository
 ) {
     private lateinit var customer: Customer
 
     @BeforeEach
     fun setup() {
-        /*customerRepository = InMemoryCustomerRepository()*/
+        customerRepository = InMemoryCustomerRepository()
         customer = Customer.Builder()
             .id(UUID.randomUUID())
             .name("Jane Doe")
