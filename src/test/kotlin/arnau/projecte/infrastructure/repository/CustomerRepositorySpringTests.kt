@@ -12,7 +12,7 @@ import java.util.Optional
 import java.util.UUID
 
 @ExtendWith(MockitoExtension::class)
-class CustomerRepositorySpringTests {
+class CustomerRepositorySpringTests {//We unit test this class because it injects the CustomerRepositoryJPA
 
     @Mock
     private lateinit var customerRepositoryJPA: CustomerRepositoryJPA
