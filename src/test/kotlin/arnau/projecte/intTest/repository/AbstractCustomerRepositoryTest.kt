@@ -1,30 +1,28 @@
 package arnau.projecte.intTest.repository
 
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.boot.test.context.SpringBootTest
 import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.model.CustomerRole
 import arnau.projecte.domain.repository.CustomerRepository
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
+import java.util.*
+import org.junit.jupiter.api.Assertions.*
 import org.springframework.data.domain.PageRequest
-import java.util.UUID
 
 @SpringBootTest
-@ActiveProfiles("test") // Activate the "test" profile
-class CustomerRepositoryIntTestInMemory(
+@ActiveProfiles("test")
+abstract class AbstractCustomerRepositoryTest : CustomerRepositoryTest{
     @Autowired
-    @Qualifier("inMemoryRepository")
-    private var customerRepository: CustomerRepository,
-) {
-    private lateinit var customer: Customer
+    lateinit var customerRepository: CustomerRepository
+
+    lateinit var customer: Customer
 
     @BeforeEach
-    fun setup() {
+    override fun setup() {
         customer = Customer.Builder()
             .id(UUID.randomUUID())
             .name("Jane Doe")
@@ -35,19 +33,19 @@ class CustomerRepositoryIntTestInMemory(
     }
 
     @AfterEach
-    fun tearDown() {
+    override fun tearDown() {
         customerRepository.clearDB()
     }
 
     @Test
-    fun `test findById returns customer`() {
+    override fun testFindByIdReturnsCustomer() {
         val foundCustomer = customerRepository.findById(customer.id)
         assertNotNull(foundCustomer)
         assertEquals(customer.id, foundCustomer?.id)
     }
 
     @Test
-    fun `test save persists customer`() {
+    override fun testSavePersistsCustomer() {
         val newCustomer = Customer.Builder()
             .id(UUID.randomUUID())
             .name("John Doe")
@@ -60,7 +58,7 @@ class CustomerRepositoryIntTestInMemory(
     }
 
     @Test
-    fun `test findAll returns paged results`() {
+    override fun testFindAllReturnsPagedResults() {
         val pageable = PageRequest.of(0, 10)
         val customersPage = customerRepository.findAll(pageable)
         assertFalse(customersPage.isEmpty)
