@@ -1,4 +1,4 @@
-package arnau.projecte.domain.process
+package arnau.projecte.intTest.process
 
 import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.repository.CustomerRepository

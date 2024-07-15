@@ -1,7 +1,7 @@
 package arnau.projecte.intTest.config
 
 import arnau.projecte.domain.repository.CustomerRepository
-import arnau.projecte.domain.process.InMemoryCustomerRepository
+import arnau.projecte.intTest.process.InMemoryCustomerRepository
 import arnau.projecte.infrastructure.repository.CustomerRepositoryJPA
 import arnau.projecte.infrastructure.repository.CustomerRepositorySpring
 import org.springframework.beans.factory.annotation.Autowired
