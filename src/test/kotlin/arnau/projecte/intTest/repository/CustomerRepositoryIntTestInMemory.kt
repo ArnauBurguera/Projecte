@@ -4,27 +4,21 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.boot.test.context.SpringBootTest
 import arnau.projecte.domain.model.Customer
 import arnau.projecte.domain.model.CustomerRole
-import arnau.projecte.domain.process.InMemoryCustomerRepository
 import arnau.projecte.domain.repository.CustomerRepository
-import arnau.projecte.infrastructure.repository.CustomerRepositorySpring
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.data.domain.PageRequest
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import java.util.UUID
 
 @SpringBootTest
 @ActiveProfiles("test") // Activate the "test" profile
-class CustomerRepositoryIntTest(
+class CustomerRepositoryIntTestInMemory(
     @Autowired
     @Qualifier("inMemoryRepository")
-    /*@Qualifier("H2")*/
     private var customerRepository: CustomerRepository,
 ) {
     private lateinit var customer: Customer
