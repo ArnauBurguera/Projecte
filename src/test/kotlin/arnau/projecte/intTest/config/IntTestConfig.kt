@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Primary
 import org.springframework.context.annotation.Profile
 
 @Configuration
-@Profile("test") // This configuration will be used when the "test" profile is active
+@Profile("test") // This configuration will be used when the "test" profile is active: application-{profile}.properties
 class IntTestConfig(
     @Autowired
     private val repo: CustomerRepositoryJPA
