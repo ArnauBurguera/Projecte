@@ -8,8 +8,8 @@ import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest
 @ActiveProfiles("test")
-class CustomerRepositoryH2Test : AbstractCustomerRepositoryTest() {
+class CustomerRepositoryInMemoryTest : AbstractCustomerRepositoryTest() {
     @Autowired
-    @Qualifier("H2")
+    @Qualifier("inMemoryRepository")
     override lateinit var customerRepository: CustomerRepository
 }
