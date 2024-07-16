@@ -36,6 +36,5 @@ class CustomerController(
         return ResponseEntity.ok(page.content)
     }
 
-    //Fer integration tests amb H2 fer package intTest i dins fer resources i dins fer application-test.properties
-    //afegir auth jwt
+    //afegir auth jwt: https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html
 }

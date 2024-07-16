@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: ../../../../../..
-      dockerfile: src/main/kotlin/arnau/projecte/docker/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
