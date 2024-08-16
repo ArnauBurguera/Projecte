@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.springframework.data.domain.PageRequest
 
 @SpringBootTest
-@ActiveProfiles("test")
+@ActiveProfiles("test")  //For academic purposes I wanted to create two different impls.; in-memory repository and  H2 repository
 abstract class AbstractCustomerRepositoryTest : CustomerRepositoryTest{
     @Autowired
     lateinit var customerRepository: CustomerRepository
