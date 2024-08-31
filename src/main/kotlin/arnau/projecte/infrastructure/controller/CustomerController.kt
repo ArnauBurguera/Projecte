@@ -20,6 +20,10 @@ class CustomerController(
         private val customerService: CustomerService
 ) {
 
+    @GetMapping("/public")
+    fun getPublicInfo(): ResponseEntity<String> =
+            ResponseEntity.ok("This is public info")
+
     @GetMapping("/{id}")
     fun getUserById(@PathVariable id: String): ResponseEntity<Customer> =
             customerService.getCustomerById(UUID.fromString(id))?.let {
