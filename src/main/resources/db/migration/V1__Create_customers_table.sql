@@ -1,4 +1,4 @@
-CREATE TYPE customer_role AS ENUM ('CUSTOM', 'ADMIN', 'MODERATOR');
+CREATE TYPE customer_role AS ENUM ('USER', 'ADMIN', 'MODERATOR');
 
 CREATE TABLE customers (
    id UUID PRIMARY KEY,
