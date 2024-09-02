@@ -24,15 +24,17 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation ("org.postgresql:postgresql:42.2.18")
+    implementation ("org.springframework.boot:spring-boot-starter-oauth2-client")
+    implementation ("org.postgresql:postgresql:42.7.2")
     implementation ("org.flywaydb:flyway-core")
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation ("org.springframework.security:spring-security-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("org.mockito:mockito-core:3.6.0")
     testImplementation("org.mockito:mockito-junit-jupiter:3.6.0")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("com.h2database:h2:1.4.200")
+    testImplementation("com.h2database:h2:2.2.220")
 }
 
 tasks.withType<KotlinCompile> {
