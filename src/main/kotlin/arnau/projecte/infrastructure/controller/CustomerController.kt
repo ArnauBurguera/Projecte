@@ -39,6 +39,4 @@ class CustomerController(
         val page = customerService.getAllCustomers(pageable)
         return ResponseEntity.ok(page.content)
     }
-
-    //afegir auth jwt: https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html
 }
