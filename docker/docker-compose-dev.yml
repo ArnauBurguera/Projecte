@@ -1,0 +1,11 @@
+#docker-compose -f docker-compose-prod.yml up --build
+services:
+  db:
+    image: postgres:14.8
+    ports:
+      - "5401:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Aburguera1234
+#Aquí hauria de tirar de envvars tambe? O es on es cofigura de zero i aleshores no?
