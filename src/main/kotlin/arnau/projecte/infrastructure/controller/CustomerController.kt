@@ -41,7 +41,7 @@ class CustomerController(
     }
 }
 /*
-- Intentar veure què fa internament spring security
+- Veure video del pavo de oath i implementar e q faci.
 - provar compose dev
 -Un bash script(que es com una task en llenguatge maquina) per fer el build automaticament.
 -I un altre bash script per insertar 1mil usuaris a la db amb un init.sql o algo així, no cal que sigui migration de moment només crearlos amb un random UUID i
