@@ -1,6 +1,6 @@
 #docker-compose -f docker-compose-prod.yml up --build
 services:
-  app:
+  projecteapp:
     build:
       context: ..
       dockerfile: docker/Dockerfile
@@ -12,7 +12,7 @@ services:
       - SPRING_DATASOURCE_URL={$SPRING_DATASOURCE_URL}}
       - SPRING_DATASOURCE_USERNAME={$SPRING_DATASOURCE_USERNAME}}
       - SPRING_DATASOURCE_PASSWORD={$SPRING_DATASOURCE_PASSWORD}}
-  db:
+  projectedb:
     image: postgres:14.8
     ports:
       - "5401:5432"
