@@ -39,5 +39,5 @@ out/
 ### Kotlin ###
 .kotlin
 
-### Ignore envvars.yaml
-/envvars/envvars.yaml
+### Ignore envvars.env
+/envvars/envvars.env

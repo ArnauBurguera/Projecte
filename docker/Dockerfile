@@ -3,7 +3,7 @@
 #If you need to compile or debug Java code within the container, you need the JDK.
 FROM openjdk:17-jdk-slim
 ARG JAR_FILE=build/libs/projecte-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} projecte.jar
 ENTRYPOINT ["java","-jar","/projecte.jar"]
 #CMD: Provides default arguments for the container. It can be overridden by passing arguments to docker run.
 #ENTRYPOINT: Sets the command that will always run when the container starts. It is not easily overridden.
