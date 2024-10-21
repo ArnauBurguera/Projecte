@@ -36,7 +36,3 @@ INSERT INTO customers (id, name, bank_account, role) VALUES
      ('0cce99b4-b0a4-4b25-bbb5-0400b3490a56', 'Alice White', '444555666', 'USER'),
      ('0cc3ea1f-1024-4bbe-91dc-870b54f5a0fc', 'Bob Black', '777888999', 'MODERATOR'),
      ('51fcf616-36aa-48fb-8e40-bbe36bf9bfda', 'Eve Green', '000111222', 'ADMIN');
-
-
-
-
