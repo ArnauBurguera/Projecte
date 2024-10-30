@@ -27,6 +27,7 @@ dependencies {
     implementation ("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation ("org.postgresql:postgresql:42.7.2")
     implementation ("org.flywaydb:flyway-core")
+    implementation("io.github.cdimascio:java-dotenv:5.2.2")
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation ("org.springframework.security:spring-security-test")
