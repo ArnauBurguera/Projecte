@@ -42,8 +42,6 @@ class CustomerController(
 }
 /*
 - Veure video del pavo de oath i implementar e q faci.
-- solucionar application.properties no llegint .env
-
 -sh run carrega les envvars minim dels minims (les envvars.sh)
 -sh reset local db (2: crear base dades i fer el insert/seed)
 
