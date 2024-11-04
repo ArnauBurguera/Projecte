@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "[*] Setting up your Spring Boot project..."
+echo "[*] Setting up Spring Boot project..."
 
 # Navigate to project directory
 cd "$(dirname "$0")/.." || exit
