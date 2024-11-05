@@ -42,8 +42,11 @@ class CustomerController(
 }
 /*
 - Veure video del pavo de oath i implementar e q faci.
--sh run carrega les envvars minim dels minims (les envvars.sh)??Com funciona
 -sh reset local db (2: crear base dades i fer el insert/seed)
+    check connection amb el container de la db
+    si está up, drop db, create db, create tables, insert seed
+    (corrents els sql files que son les migrations)
+    Investiga si flyway et pot donar porblemes
 
 -I un altre bash script per insertar 1mil usuaris a la db amb un init.sql o algo així, no cal que sigui migration de moment només crearlos amb un random UUID i
    que faci cherrypicking d'una llita de 5 noms o així. La idea final es fer un que creei com 8M i aleshores provar a fer un redis per guaradr la base a la cache o així i veure la diferencia
