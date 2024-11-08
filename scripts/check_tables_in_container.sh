@@ -20,3 +20,10 @@ psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" -c '\dt' || {
 
 # Cleanup
 unset PGPASSWORD # clears the password afterward for security reasons, removing it from the environment.
+
+# about -c '\dt':
+# -c: This flag in psql specifies that the following string is an SQL command to be executed directly.
+# Instead of entering an interactive session with psql, it will execute the command given after -c and then exit.
+
+# \dt: This is a psql meta-command (or shortcut command) that lists all tables in the currently connected
+# database, including schema, table names, types, and ownership.
