@@ -3,9 +3,9 @@
 # Database connection settings (from environment variables)
 DB_HOST="localhost"                   # Connects to the mapped host port
 DB_PORT="5401"                        # Host port mapped to PostgreSQL container port (5432) in docker-compose
-DB_USER="${SPRING_DATASOURCE_USERNAME:-postgres}"
+DB_USER="${SPRING_DATASOURCE_USERNAME:-arnau}"
 DB_PASSWORD="${SPRING_DATASOURCE_PASSWORD:-Aburguera1234}"
-DB_NAME="${POSTGRES_DB:-postgres}"
+DB_NAME="${POSTGRES_DB:-projectedb}"
 
 echo "[*] Checking database connection and listing tables..."
 

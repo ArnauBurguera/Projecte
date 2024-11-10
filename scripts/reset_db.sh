@@ -3,9 +3,9 @@
 # Database connection settings (from your environment variables)
 DB_HOST="localhost"
 DB_PORT="5401"
-DB_USER="${SPRING_DATASOURCE_USERNAME:-postgres}"
+DB_USER="${SPRING_DATASOURCE_USERNAME:-arnau}"
 DB_PASSWORD="${SPRING_DATASOURCE_PASSWORD:-Aburguera1234}"
-DB_NAME="${POSTGRES_DB:-postgres}"
+DB_NAME="${POSTGRES_DB:-projectedb}"
 
 echo "[*] Starting database reset..."
 
