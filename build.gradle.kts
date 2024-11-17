@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "3.2.5"
     id("io.spring.dependency-management") version "1.1.4"
+    id("org.flywaydb.flyway") version "9.22.0"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.spring") version "1.9.23"
 }
@@ -47,4 +48,11 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+flyway {
+    url = "jdbc:postgresql://localhost:5401/projectedb"
+    user = System.getenv("SPRING_DATASOURCE_USERNAME") ?: "arnau"
+    password = System.getenv("SPRING_DATASOURCE_PASSWORD") ?: "Aburguera1234"
+    locations = arrayOf("classpath:db/migration")
 }
