@@ -1,5 +1,5 @@
 import random
-import uuid
+import uuid 
 
 # Predefined names and surnames
 names = ["John", "Jane", "Grace", "Tom", "Alice", "Bob", "Eve", "Mike", "Sara", "Sam"]
