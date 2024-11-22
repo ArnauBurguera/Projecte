@@ -1,6 +1,7 @@
 import random
 import uuid
 
+DEFAULT_NUM_USERS = 10  # Default number of users to generate
 # Predefined names and surnames
 names = ["Frodo", "Gandalf", "Aragorn", "Legolas", "Gimli",
          "Samwise", "Boromir", "Pippin", "Merry", "Saruman",
@@ -25,14 +26,13 @@ def generate_random_customer():
 
 
 def generate_customers(number_of_customers):
-    generated_customers = [generate_random_customer() for _ in range(number_of_customers)]
-    return generated_customers
+    return [generate_random_customer() for _ in range(number_of_customers)]
 
 
 if __name__ == "__main__":
     import sys
 
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
+    n = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_NUM_USERS
     customers = generate_customers(n)
     for customer in customers:
         print(f"('{customer[0]}', '{customer[1]}', '{customer[2]}', '{customer[3]}'),")
