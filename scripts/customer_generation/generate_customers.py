@@ -13,7 +13,7 @@ surnames = ["Baggins", "Brandybuck", "Took", "Gamgee", "Greenleaf",
             "Noldor", "Mithrandir", "Mirkwood", "Rivendell", "Gríma"]
 
 # Predefined roles
-roles = ["USER", "MODERATOR"]
+roles = ["USER"]
 
 
 def generate_random_customer():
