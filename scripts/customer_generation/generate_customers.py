@@ -1,26 +1,37 @@
 import random
-import uuid 
+import uuid
 
 # Predefined names and surnames
-names = ["John", "Jane", "Grace", "Tom", "Alice", "Bob", "Eve", "Mike", "Sara", "Sam"]
-surnames = ["Doe", "Smith", "Green", "Brown", "Black", "White"]
+names = ["Frodo", "Gandalf", "Aragorn", "Legolas", "Gimli",
+         "Samwise", "Boromir", "Pippin", "Merry", "Saruman",
+         "Elrond", "Galadriel", "Eowyn", "Theoden", "Sauron",
+         "Fëanor", "Fingolfin", "Túrin", "Lúthien", "Melian"]
+
+surnames = ["Baggins", "Brandybuck", "Took", "Gamgee", "Greenleaf",
+            "Greyhame", "Shieldsheaf", "Bloodeye", "Stout", "Ironfoot",
+            "Stormbreaker", "Galadhrim", "Evenstar", "Bëor", "Finarfin",
+            "Noldor", "Mithrandir", "Mirkwood", "Rivendell", "Gríma"]
 
 # Predefined roles
-roles = ["USER", "ADMIN", "MODERATOR"]
+roles = ["USER", "MODERATOR"]
+
 
 def generate_random_customer():
     customer_id = str(uuid.uuid4())
     name = f"{random.choice(names)} {random.choice(surnames)}"
     bank_account = ''.join(random.choices('0123456789', k=9))
     role = random.choice(roles)
-    return (customer_id, name, bank_account, role)
+    return customer_id, name, bank_account, role
 
-def generate_customers(n):
-    customers = [generate_random_customer() for _ in range(n)]
-    return customers
+
+def generate_customers(number_of_customers):
+    generated_customers = [generate_random_customer() for _ in range(number_of_customers)]
+    return generated_customers
+
 
 if __name__ == "__main__":
     import sys
+
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 10
     customers = generate_customers(n)
     for customer in customers:
