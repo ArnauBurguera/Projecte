@@ -10,6 +10,10 @@ import org.springframework.security.web.SecurityFilterChain
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
+/*
+- Veure video del pavo de oath i implementar e q faci.
+- https://www.youtube.com/watch?v=PczgM2L3w60 and https://www.youtube.com/watch?v=KYNR5js2cXE for more tasty security
+*/
 
     @Bean
     @Throws(Exception::class)
