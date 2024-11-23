@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
+import org.springframework.web.bind.annotation.RequestParam
 
 
 @RestController
@@ -40,7 +41,21 @@ class CustomerController(
 
     //POST
 
-    @PostMapping
+    @PostMapping("/customer_object")
     fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Customer> =
         ResponseEntity.ok(customerService.createCustomer(customer))
+
+    @PostMapping("/customer_params")
+    fun createCustomer(
+        @RequestParam name: String,
+        @RequestParam bankAccount: String
+    ): ResponseEntity<Customer> =
+        ResponseEntity.ok(
+            customerService.createCustomer(
+                Customer.Builder()
+                    .name(name)
+                    .bankAccount(bankAccount)
+                    .build()
+            )
+        )
 }
