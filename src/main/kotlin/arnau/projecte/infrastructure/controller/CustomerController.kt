@@ -20,6 +20,8 @@ class CustomerController(
         private val customerService: CustomerService
 ) {
 
+    //GET
+
     @GetMapping("/public")
     fun getPublicInfo(): ResponseEntity<String> =
             ResponseEntity.ok("This is public info")
@@ -30,13 +32,15 @@ class CustomerController(
                 ResponseEntity.ok(it)
             } ?: ResponseEntity.notFound().build()
 
-    @PostMapping
-    fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Customer> =
-            ResponseEntity.ok(customerService.createCustomer(customer))
-
     @GetMapping
     fun getAllUsers(@PageableDefault(size = 10) pageable: Pageable): ResponseEntity<List<Customer>> {
         val page = customerService.getAllCustomers(pageable)
         return ResponseEntity.ok(page.content)
     }
+
+    //POST
+
+    @PostMapping
+    fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Customer> =
+        ResponseEntity.ok(customerService.createCustomer(customer))
 }
