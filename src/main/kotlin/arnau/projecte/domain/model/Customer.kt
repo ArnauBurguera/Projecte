@@ -11,7 +11,6 @@ import java.util.UUID
 @Table(name = "customers")
 data class Customer(
         @Id val id: UUID = UUID.randomUUID(),
-        //add mail
         val name: String,
         val bankAccount: String,
         @Enumerated(EnumType.STRING)
