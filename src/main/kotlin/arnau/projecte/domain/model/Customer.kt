@@ -11,6 +11,7 @@ import java.util.UUID
 @Table(name = "customers")
 data class Customer(
         @Id val id: UUID = UUID.randomUUID(),
+        //add mail
         val name: String,
         val bankAccount: String,
         @Enumerated(EnumType.STRING)
@@ -20,16 +21,16 @@ data class Customer(
 
     class Builder {
         private var id: UUID = UUID.randomUUID()
-        private var name: String = ""
+        private var firstName: String = ""
         private var bankAccount: String = ""
         private var role: CustomerRole = CustomerRole.USER
 
         fun id(id: UUID) = apply { this.id = id }
-        fun name(name: String) = apply { this.name = name }
+        fun name(name: String) = apply { this.firstName = name }
         fun bankAccount(bankAccount: String) = apply { this.bankAccount = bankAccount }
         fun role(role: CustomerRole) = apply { this.role = role }
 
-        fun build() = Customer(id, name, bankAccount, role)
+        fun build() = Customer(id, firstName, bankAccount, role)
     }
 }
 

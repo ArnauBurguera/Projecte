@@ -2,6 +2,7 @@ package arnau.projecte.infrastructure.controller
 
 import arnau.projecte.application.service.CustomerService
 import arnau.projecte.domain.model.Customer
+import arnau.projecte.dto.CustomerDTO
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -42,20 +43,13 @@ class CustomerController(
     //POST
 
     @PostMapping("/customer_object")
-    fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Customer> =
-        ResponseEntity.ok(customerService.createCustomer(customer))
+    fun createCustomer(@RequestBody customerDTO: CustomerDTO): ResponseEntity<Customer> =
+        ResponseEntity.ok(customerService.createCustomerFromDTO(customerDTO))
 
     @PostMapping("/customer_params")
     fun createCustomer(
         @RequestParam name: String,
         @RequestParam bankAccount: String
     ): ResponseEntity<Customer> =
-        ResponseEntity.ok(
-            customerService.createCustomer(
-                Customer.Builder()
-                    .name(name)
-                    .bankAccount(bankAccount)
-                    .build()
-            )
-        )
+        ResponseEntity.ok(customerService.createCustomerFromParams(name, bankAccount))
 }
