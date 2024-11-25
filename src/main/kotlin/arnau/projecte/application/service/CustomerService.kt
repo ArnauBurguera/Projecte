@@ -20,11 +20,17 @@ class CustomerService (
     fun getCustomerById(id: UUID): Customer? {
         val key = "customer:$id"
 
+        println("RUUUUUUNS!!!")
+
         try {
-            val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer
+            val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer //safe cast to Customer
             if (cachedCustomer != null) {
+                println("this is the cached customer: $cachedCustomer")
                 return cachedCustomer
+            }else{
+                println("No cached customer")
             }
+
         } catch (e: Exception) {
             println("Error fetching from cache: ${e.message}")
         }
