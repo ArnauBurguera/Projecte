@@ -12,32 +12,23 @@ import org.springframework.data.redis.core.RedisTemplate
 import java.util.concurrent.TimeUnit
 
 @Service
-class CustomerService (
+class CustomerService(
     private val customerRepository: CustomerRepository,
     private val customerMapper: CustomerMapper,
     private val redisTemplate: RedisTemplate<String, Any>,
 ) {
     fun getCustomerById(id: UUID): Customer? {
         val key = "customer:$id"
-
-        println("RUUUUUUNS!!!")
-
-        try {
-            val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer //safe cast to Customer
-            if (cachedCustomer != null) {
-                println("this is the cached customer: $cachedCustomer")
-                return cachedCustomer
-            }else{
-                println("No cached customer")
-            }
-
-        } catch (e: Exception) {
-            println("Error fetching from cache: ${e.message}")
+        
+        val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer //safe cast to Customer
+        if (cachedCustomer != null) {
+            println("this is the cached customer: $cachedCustomer")
+            return cachedCustomer
         }
 
         val customer = customerRepository.findById(id) ?: return null
 
-        redisTemplate.opsForValue().set(key, customer, 10, TimeUnit.MINUTES) // Cache for 10 minutes
+        redisTemplate.opsForValue().set(key, customer, 10, TimeUnit.MINUTES)
         return customer
     }
 
