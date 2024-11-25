@@ -1,12 +1,15 @@
 package arnau.projecte.config
 
 
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
 
 @Configuration
@@ -28,7 +31,8 @@ class RedisConfig {
         val template = RedisTemplate<String, Any>()
         template.connectionFactory = redisConnectionFactory()
         template.keySerializer = StringRedisSerializer()
-        template.valueSerializer = StringRedisSerializer()
+        val objectMapper = jacksonObjectMapper().registerModule(KotlinModule())
+        template.valueSerializer = GenericJackson2JsonRedisSerializer(objectMapper)
         return template
     }
 }
