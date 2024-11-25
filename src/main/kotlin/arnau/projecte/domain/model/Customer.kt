@@ -5,6 +5,7 @@ import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.io.Serializable
 import java.util.UUID
 
 @Entity
@@ -15,7 +16,7 @@ data class Customer(
         val bankAccount: String,
         @Enumerated(EnumType.STRING)
         val role: CustomerRole
-) {
+): Serializable {
     constructor() : this(UUID.randomUUID(), "", "", CustomerRole.USER)//JPA requires that all entity classes have a no-argument constructor.
 
     class Builder {

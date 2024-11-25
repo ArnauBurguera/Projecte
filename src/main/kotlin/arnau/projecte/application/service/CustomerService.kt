@@ -17,21 +17,20 @@ class CustomerService (
     private val customerMapper: CustomerMapper,
     private val redisTemplate: RedisTemplate<String, Any>,
 ) {
-    /*fun getCustomerById(id: UUID): Customer? = customerRepository.findById(id)*/
-
     fun getCustomerById(id: UUID): Customer? {
         val key = "customer:$id"
 
-        // Check cache first
-        val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer
-        if (cachedCustomer != null) {
-            return cachedCustomer
+        try {
+            val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer
+            if (cachedCustomer != null) {
+                return cachedCustomer
+            }
+        } catch (e: Exception) {
+            println("Error fetching from cache: ${e.message}")
         }
 
-        // Fetch from database
         val customer = customerRepository.findById(id) ?: return null
 
-        // Cache the result
         redisTemplate.opsForValue().set(key, customer, 10, TimeUnit.MINUTES) // Cache for 10 minutes
         return customer
     }
