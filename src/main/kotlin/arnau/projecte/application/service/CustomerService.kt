@@ -8,13 +8,34 @@ import java.util.UUID
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.data.redis.core.RedisTemplate
+import java.util.concurrent.TimeUnit
 
 @Service
 class CustomerService (
-        private val customerRepository: CustomerRepository,
-        private val customerMapper: CustomerMapper
+    private val customerRepository: CustomerRepository,
+    private val customerMapper: CustomerMapper,
+    private val redisTemplate: RedisTemplate<String, Any>,
 ) {
-    fun getCustomerById(id: UUID): Customer? = customerRepository.findById(id)
+    /*fun getCustomerById(id: UUID): Customer? = customerRepository.findById(id)*/
+
+    fun getCustomerById(id: UUID): Customer? {
+        val key = "customer:$id"
+
+        // Check cache first
+        val cachedCustomer = redisTemplate.opsForValue().get(key) as? Customer
+        if (cachedCustomer != null) {
+            return cachedCustomer
+        }
+
+        // Fetch from database
+        val customer = customerRepository.findById(id) ?: return null
+
+        // Cache the result
+        redisTemplate.opsForValue().set(key, customer, 10, TimeUnit.MINUTES) // Cache for 10 minutes
+        return customer
+    }
+
     fun createCustomerFromDTO(customerDTO: CustomerDTO): Customer {
         val customer = customerMapper.toCustomer(customerDTO)
         return customerRepository.save(customer)
