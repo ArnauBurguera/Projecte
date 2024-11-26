@@ -19,6 +19,7 @@ class SecurityConfig {
     @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
+            .csrf { csrf -> csrf.disable() } // only in dev (Cross-site request forgery is enabled by default for any state-changing operations like POST, PUT, DELETE in Spring Security)
             .authorizeHttpRequests { authorizeRequests ->
                 authorizeRequests
                     .requestMatchers("/users/**").permitAll()
